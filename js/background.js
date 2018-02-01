@@ -1,28 +1,34 @@
 jQuery(document).ready(function ($) {
-    function saveMessage(message) {
+    function saveMessage(message, key) {
         chrome.storage.sync.set({"messageFreelancehunt": message});
     }
 
     function onSaveMessage(event) {
         event.preventDefault();
         var message = $("#my-message-freelancehunt").val();
-        saveMessage(message);
+        chrome.storage.sync.set({"messageFreelancehunt": message});
+
+        message = $("#my-message-weblancer").val();
+        chrome.storage.sync.set({"messageWeblancer": message});
+
         var $messages = $(".messages");
-        $messages.show().text("Сохранено");
+        $messages.hide().show().text("Сохранено");
         setTimeout(function () {
             $messages.fadeOut(400);
         }, 3000);
     }
 
-    function loadMessage() {
+    function loadMessages() {
         chrome.storage.sync.get('messageFreelancehunt', function (items) {
             $("#my-message-freelancehunt").val(items.messageFreelancehunt);
         });
-
+        chrome.storage.sync.get('messageWeblancer', function (items) {
+            $("#my-message-weblancer").val(items.messageWeblancer);
+        });
     }
 
-    $(document).on("click", "#my-message-add", onSaveMessage);
-    loadMessage();
+    $(document).on("click", ".my-message-add", onSaveMessage);
+    loadMessages();
 
 
     $(document).ready(function () {

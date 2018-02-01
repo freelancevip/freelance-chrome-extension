@@ -17,6 +17,15 @@
         "js/jquery-3.3.1.min.js",
         "js/freelancehunt.js"
       ]
+    },
+    {
+      "matches": [
+        "https://www.weblancer.net/*"
+      ],
+      "js": [
+        "js/jquery-3.3.1.min.js",
+        "js/weblancer.js"
+      ]
     }
   ],
   "background": {
