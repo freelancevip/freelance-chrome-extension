@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "Freelancevip chrome extension",
+  "description": "Помогает быстро добавлять заявки к проектам",
+  "version": "0.1",
+  "icons": {
+    "16": "img/icon/16.png",
+    "48": "img/icon/48.png",
+    "128": "img/icon/128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://freelancehunt.com/*"
+      ],
+      "js": [
+        "js/jquery-3.3.1.min.js",
+        "js/freelancehunt.js"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": [
+      "js/jquery-3.3.1.min.js",
+      "js/background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "https://freelancehunt.com/*",
+    "https://weblancer.net/*",
+    "storage"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}
